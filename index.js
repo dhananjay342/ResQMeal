@@ -1,10 +1,9 @@
 import express from 'express';
+import connectDB from './config/database.js';
 const app = express();
 const PORT = process.env.PORT;
 
-// Connect to MongoDB
 connectDB();
-
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
