@@ -1,0 +1,38 @@
+@baseUrl=http://localhost:3240
+
+@userId=6ac50343c6dbf21998bb6cb1
+
+
+### CREATE USER
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+"name": "",
+"email": "ab.c@example.com",
+"password": "user@123",
+"phone": "9800000000",
+"role": "volunteer"
+}
+
+
+### GET ALL USERS
+GET {{baseUrl}}/users
+
+### GET USER BY ID
+GET {{baseUrl}}/users/{{userId}}
+
+
+### UPDATE USER
+PATCH {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+"name": "John Updated",
+"phone": "9811111111",
+"role": "coordinator"
+}
+
+
+### DELETE USER
+DELETE {{baseUrl}}/users/{{userId}}
