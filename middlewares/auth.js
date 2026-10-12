@@ -1,6 +1,6 @@
 import { verifyAccessToken } from "../config/jwt.js";
 const publicRoutes = [ "/auth/register", "/auth/login" ];
-export const authMiddleware = (req, res, next) => {
+export const authMiddleware = async (req, res, next) => {
   if (publicRoutes.includes(req.path)) {
      return next();
   }
@@ -9,7 +9,7 @@ export const authMiddleware = (req, res, next) => {
   if ( !token || type !== "Bearer") {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  const userId = verifyAccessToken(token);
+  const userId = await verifyAccessToken(token);
   req.user = userId;
   next();
 }
